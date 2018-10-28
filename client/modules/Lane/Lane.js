@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import NotesContainer from '../Note/NotesContainer';
 import Edit from '../../components/Edit';
 
@@ -11,9 +12,7 @@ const Lane = (props) => {
   return (
     <div className={styles.Lane}>
       <div className={styles.LaneHeader}>
-        <div className={styles.LaneAddNote}>
-          <button onClick={() => addNote({ task: 'New Note' }, laneId)}>Add Note</button>
-        </div>
+        <button className={styles.LaneAddNote} onClick={() => addNote({ task: 'New Note' }, laneId)}>Add Note</button>
         <Edit
           className={styles.LaneName}
           editing={lane.editing}

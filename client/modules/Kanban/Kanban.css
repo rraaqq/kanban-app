@@ -1,1 +1,4 @@
-/* Kanban styles */
+.addLane {
+    width: 100px;
+    margin: 30px;
+}

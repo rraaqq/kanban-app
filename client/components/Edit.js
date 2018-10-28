@@ -1,5 +1,6 @@
-import React, { Component, PropTypes } from 'react';
-import styles from './Edit.css';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styles from '../modules/Lane/Lane.css';
 
 export default class Edit extends Component {
   checkEnter = (e) => {
@@ -10,7 +11,6 @@ export default class Edit extends Component {
 
   finishEdit = (e) => {
     const value = e.target.value;
-
     if (this.props.onUpdate) {
       this.props.onUpdate(value.trim());
     }
