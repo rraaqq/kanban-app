@@ -4,6 +4,8 @@
 
 .Lane {
    min-width: 200px;
+   background-color: yellow;
+   margin: 5px;
 }
 
 .LaneAddNote {

@@ -37,7 +37,6 @@ export function deleteLane(req, res) {
     if (err) {
       res.status(500).send(err);
     }
-
     lane.remove(() => {
       res.status(200).end();
     });

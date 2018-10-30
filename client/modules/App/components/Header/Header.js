@@ -23,8 +23,6 @@ Header.contextTypes = {
 };
 
 Header.propTypes = {
-  toggleAddPost: PropTypes.func.isRequired,
-  switchLanguage: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired,
 };
 
