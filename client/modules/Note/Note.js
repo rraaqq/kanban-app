@@ -5,28 +5,6 @@ import { DragSource, DropTarget } from 'react-dnd';
 import ItemTypes from '../Kanban/itemTypes';
 import { compose } from 'redux';
 
-const noteSource = {
-  beginDrag(props) {
-    return {
-      id: props.id,
-      laneId: props.laneId,
-    };
-  },
-  isDragging(props, monitor) {
-    return props.id === monitor.getItem().id;
-  },
-};
-
-const noteTarget = {
-  hover(targetProps, monitor) {
-    const sourceProps = monitor.getItem();
-
-    if (targetProps.id !== sourceProps.id) {
-      targetProps.moveWithinLane(targetProps.laneId, targetProps.id, sourceProps.id);
-    }
-  },
-};
-
 class Note extends React.Component {
   constructor(props) {
     super(props);
@@ -51,6 +29,28 @@ class Note extends React.Component {
     ));
   }
 }
+
+const noteSource = {
+  beginDrag(props) {
+    return {
+      id: props.id,
+      laneId: props.laneId,
+    };
+  },
+  isDragging(props, monitor) {
+    return props.id === monitor.getItem().id;
+  },
+};
+
+const noteTarget = {
+  hover(targetProps, monitor) {
+    const sourceProps = monitor.getItem();
+
+    if (targetProps.id !== sourceProps.id) {
+      targetProps.moveWithinLane(targetProps.laneId, targetProps.id, sourceProps.id);
+    }
+  },
+};
 
 Note.propTypes = {
   children: PropTypes.any,
