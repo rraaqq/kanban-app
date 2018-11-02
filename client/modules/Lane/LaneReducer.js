@@ -43,28 +43,23 @@ const LaneReducer = (state = initialState, action) => {
     case MOVE_WITHIN_LANE: {
       const newLane = { ...state[action.laneId] };
       newLane.notes = moveNotes(newLane.notes, action.sourceId, action.targetId);
-
       return { ...state, [action.laneId]: newLane };
     }
     case MOVE_BETWEEN_LANES: {
       const targetLane = { ...state[action.targetLaneId] };
       targetLane.notes = [...targetLane.notes, action.noteId];
-
       const sourceLane = { ...state[action.sourceLaneId] };
       sourceLane.notes = sourceLane.notes.filter(noteId => noteId !== action.noteId);
-
       return { ...state, [action.targetLaneId]: targetLane, [action.sourceLaneId]: sourceLane };
     }
     case REMOVE_FROM_LANE: {
       const sourceLane = { ...state[action.sourceLaneId] };
       sourceLane.notes = sourceLane.notes.filter(noteId => noteId !== action.noteId);
-
       return { ...state, [action.sourceLaneId]: sourceLane };
     }
     case PUSH_TO_LANE: {
       const targetLane = { ...state[action.targetLaneId] };
       targetLane.notes = [...targetLane.notes, action.noteId];
-
       return { ...state, [action.targetLaneId]: targetLane };
     }
     default:

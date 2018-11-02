@@ -45,5 +45,4 @@ Notes.propTypes = {
   moveWithinLane: PropTypes.func,
 };
 
-
 export default Notes;

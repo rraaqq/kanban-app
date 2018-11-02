@@ -12,7 +12,13 @@ const Lane = (props) => {
   return connectDropTarget(
     <div className={styles.Lane}>
       <div className={styles.LaneHeader}>
-        <button className={styles.LaneAddNote} onClick={() => addNote({ task: 'New Note' }, laneId)}>Add Note</button>
+        <button
+          className={styles.LaneAddNote}
+          onClick={() => {
+            const noteName = prompt('Enter name of the task', 'New task');
+            addNote({ task: noteName }, laneId);
+          }}
+        >Add Note</button>
         <Edit
           className={styles.LaneName}
           editing={lane.editing}

@@ -13,9 +13,10 @@ const Kanban = (props) => (
   <div>
     <button
       className={styles.addLane}
-      onClick={() => props.createLane({
-        name: 'New lane',
-      })}
+      onClick={() => {
+        const laneName = prompt('Enter name of the lane', 'New lane');
+        props.createLane({ name: laneName });
+      }}
     >Add lane</button>
     <Lanes lanes={props.lanes} />
   </div>

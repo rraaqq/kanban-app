@@ -57,7 +57,6 @@ const noteTarget = {
   },
 };
 
-
 Note.propTypes = {
   children: PropTypes.any,
   connectDragSource: PropTypes.any,
