@@ -4,7 +4,7 @@ import omit from 'lodash/omit';
 
 const initialState = {};
 
-export default function notes(state = initialState, action) {
+const NoteReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_NOTE:
     case UPDATE_NOTE:
@@ -16,8 +16,11 @@ export default function notes(state = initialState, action) {
     case DELETE_NOTE:
       return omit(state, action.noteId);
     case CREATE_NOTES:
-      return { ...action.notes };
+      return { ...state, ...action.notes };
     default:
       return state;
   }
-}
+};
+
+export default NoteReducer;
+

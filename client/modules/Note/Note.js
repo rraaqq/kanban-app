@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Note.css';
 import { DragSource, DropTarget } from 'react-dnd';
 import ItemTypes from '../Kanban/itemTypes';
 import { compose } from 'redux';
 
-class Note extends React.Component {
+class Note extends Component {
   constructor(props) {
     super(props);
     this.props = props;
@@ -24,8 +24,12 @@ class Note extends React.Component {
     return dragSource(connectDropTarget(
       <li
         className={styles.Note}
-        style={{ opacity: isDragging ? 0 : 1 }}
-      >{children}</li>
+        style={{
+          opacity: isDragging ? 0 : 1,
+        }}
+      >
+        {children}
+      </li>
     ));
   }
 }
@@ -35,6 +39,7 @@ const noteSource = {
     return {
       id: props.id,
       laneId: props.laneId,
+      _id: props._id,
     };
   },
   isDragging(props, monitor) {
@@ -46,18 +51,19 @@ const noteTarget = {
   hover(targetProps, monitor) {
     const sourceProps = monitor.getItem();
 
-    if (targetProps.id !== sourceProps.id) {
+    if (targetProps.id !== sourceProps.id && targetProps.laneId === sourceProps.laneId) {
       targetProps.moveWithinLane(targetProps.laneId, targetProps.id, sourceProps.id);
     }
   },
 };
 
+
 Note.propTypes = {
   children: PropTypes.any,
   connectDragSource: PropTypes.any,
+  connectDropTarget: PropTypes.any,
   isDragging: PropTypes.any,
   editing: PropTypes.any,
-  connectDropTarget: PropTypes.any,
 };
 
 export default compose(
